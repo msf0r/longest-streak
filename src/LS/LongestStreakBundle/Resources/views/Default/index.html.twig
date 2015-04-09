@@ -1,0 +1,23 @@
+{% extends "@LSLongestStreak/layout.html.twig" %}
+{% block main_body %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Place</th>
+                <th>Username</th>
+                <th>LongestStreak</th>
+                <th>Last date of streak</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for User in Users %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ User[0].login }}</td>
+                <td>{{ User[1] }}</td>
+                <td>{{ User[0].streak.longestStreakTo | date('d-m-Y') }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

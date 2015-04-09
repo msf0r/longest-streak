@@ -1,0 +1,62 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+    #provider
+    app.provider.github_provider:
+        class: LongestStreak\LongestStreakBundle\Provider\GitHubProvider
+        arguments:
+            - %github_client_id%
+            - %github_client_secret%
+
+    #oauth user provider
+    app.user.provider:
+            class: LongestStreak\LongestStreakBundle\User\UserProvider
+            arguments:
+                - @doctrine.orm.default_entity_manager
+                - @hwi_oauth.storage.session
+
+    #manager
+    app.update.user_updater:
+        class: LongestStreak\LongestStreakBundle\Manager\UserUpdater
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @app.manager.repos_manager
+
+    app.manager.repos_manager:
+        class: LongestStreak\LongestStreakBundle\Manager\ReposManager
+        arguments:
+            - @app.provider.github_provider
+            - @app.repository.repo
+            - @doctrine.orm.default_entity_manager
+
+    app.update.common:
+        class: LongestStreak\LongestStreakBundle\Manager\CommonUpdater
+        arguments:
+            - @doctrine.orm.default_entity_manager
+            - @app.update.user_updater
+
+    #commands
+    app.command.update_user:
+        class: LongestStreak\LongestStreakBundle\Command\UpdateUserCommand
+        tags:
+            - { name: console.command }
+
+    #repositories
+    app.repository.repo:
+        class: LongestStreak\LongestStreakBundle\Repository\RepoRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments: ["LongestStreakLongestStreakBundle:Repo"]
+
+    app.repository.commit:
+        class: LongestStreak\LongestStreakBundle\Repository\CommitRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments: ["LongestStreakLongestStreakBundle:Commit"]
+
+    app.longest_streak:
+        class: LongestStreak\LongestStreakBundle\LongestStreak\LongestStreak
+        arguments: [@doctrine.orm.default_entity_manager]
