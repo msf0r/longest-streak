@@ -3,7 +3,7 @@ set :domain,      "188.166.124.176"
 set :deploy_to,   "/var/www/ls"
 set :app_path,    "app"
 set :deploy_via, :rsync_with_remote_cache
-set :branch,      "develop"
+set :branch,      "master"
 
 set :user, "deploy"
 set :group,  "deploy"
@@ -12,10 +12,11 @@ set :use_sudo, false
 set :use_composer, true
 set :update_vendors,  false
 
-set :repository,  ""
+set :repository,  "git@github.com:msf0r/longest-streak.git"
 set :scm,         :git
 
 set :model_manager, "doctrine"
+set :dump_assetic_assets, true
 
 role :web,        domain                         # Your HTTP server, Apache/etc
 role :app,        domain, :primary => true       # This may be the same as your `Web` server
@@ -34,5 +35,5 @@ after "deploy:update_code" do
   capifony_puts_ok
 end
 
-set :keep_releases, 3
+set :keep_releases, 5
 after "deploy:update", "deploy:cleanup"
