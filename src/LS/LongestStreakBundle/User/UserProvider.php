@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityManager;
 use HWI\Bundle\OAuthBundle\OAuth\RequestDataStorage\SessionStorage;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\OAuthAwareUserProviderInterface;
-use LongestStreak\LongestStreakBundle\Entity\User;
+use LS\LongestStreakBundle\Entity\User;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
