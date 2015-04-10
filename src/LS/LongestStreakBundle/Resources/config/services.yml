@@ -58,5 +58,5 @@ services:
         arguments: ["LSLongestStreakBundle:Commit"]
 
     app.longest_streak:
-        class: LS\LongestStreakBundle\LS\LS
+        class: LS\LongestStreakBundle\LongestStreak\LongestStreak
         arguments: [@doctrine.orm.default_entity_manager]
