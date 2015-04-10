@@ -5,9 +5,9 @@ namespace LS\LongestStreakBundle\Provider;
 use Doctrine\Common\Collections\ArrayCollection;
 use Github\Client;
 use Github\Exception\RuntimeException;
-use LongestStreak\LongestStreakBundle\Entity\Commit;
-use LongestStreak\LongestStreakBundle\Entity\Repo;
-use LongestStreak\LongestStreakBundle\Entity\User;
+use LS\LongestStreakBundle\Entity\Commit;
+use LS\LongestStreakBundle\Entity\Repo;
+use LS\LongestStreakBundle\Entity\User;
 
 class GitHubProvider
 {

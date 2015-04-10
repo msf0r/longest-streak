@@ -3,7 +3,7 @@
 namespace LS\LongestStreakBundle\LongestStreak;
 
 use Doctrine\ORM\EntityManager;
-use LongestStreak\LongestStreakBundle\Entity\Streak;
+use LS\LongestStreakBundle\Entity\Streak;
 
 class LongestStreak
 {

@@ -3,19 +3,19 @@
 namespace LS\LongestStreakBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
-use LongestStreak\LongestStreakBundle\Entity\Repo;
-use LongestStreak\LongestStreakBundle\Entity\User;
-use LongestStreak\LongestStreakBundle\Provider\GitHubProvider;
-use LongestStreak\LongestStreakBundle\Repository\RepoRepository;
+use LS\LongestStreakBundle\Entity\Repo;
+use LS\LongestStreakBundle\Entity\User;
+use LS\LongestStreakBundle\Provider\GitHubProvider;
+use LS\LongestStreakBundle\Repository\RepoRepository;
 
 class ReposManager //RepositoryUpdater
 {
     /**
-     * @var \LongestStreak\LongestStreakBundle\Provider\GitHubProvider
+     * @var \LS\LongestStreakBundle\Provider\GitHubProvider
      */
     private $gitHubProvider;
     /**
-     * @var \LongestStreak\LongestStreakBundle\Repository\RepoRepository
+     * @var \LS\LongestStreakBundle\Repository\RepoRepository
      */
     private $repoRepository;
 
