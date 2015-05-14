@@ -1,11 +1,17 @@
 {
-    "name": "symfony/framework-standard-edition",
+    "name": "Longest streak",
     "license": "MIT",
     "type": "project",
-    "description": "The \"Symfony Standard Edition\" distribution",
+    "description": "longeststreak.org",
     "autoload": {
         "psr-0": { "": "src/", "SymfonyStandard": "app/" }
     },
+    "authors": [
+        {
+            "name": "Andrey M",
+            "email": "a.mazuryan@gmail.com"
+        }
+    ],
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "2.6.*",
