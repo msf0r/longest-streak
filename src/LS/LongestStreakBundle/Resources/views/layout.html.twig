@@ -31,3 +31,6 @@
 {% include '@LSLongestStreak/footer.html.twig' %}
 
 <div id="chrome_hitahintpanel" style="opacity: 0; display: none;"><input id="chrome_hitahintinput" type="text"></div><div id="chrome_hintswindow"></div><div id="chrome_linksearchpanel" style="opacity: 0; display: none;"><input id="chrome_linksearchinput" type="text"></div></body></html>
+{% javascripts '@LSLongestStreakBundle/Resources/public/js/go-analytics.js' %}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
