@@ -13,7 +13,7 @@
             {% for User in Users %}
             <tr>
                 <td>{{ loop.index }}</td>
-                <td><a href="https://github.com/{{ User[0].login }}"></a>{{ User[0].login }}</td>
+                <td><a href="https://github.com/{{ User[0].login }}">{{ User[0].login }}</a></td>
                 <td>{{ User[1] }}</td>
                 <td>{{ User[0].streak.longestStreakTo | date('d-m-Y') }}</td>
             </tr>
