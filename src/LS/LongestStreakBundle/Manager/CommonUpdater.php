@@ -28,6 +28,5 @@ class CommonUpdater
         foreach ($users as $user) {
             $this->userUpdater->update($user->getLogin());
         }
-
     }
 }

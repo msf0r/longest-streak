@@ -3,6 +3,7 @@
 namespace LS\LongestStreakBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
+use LS\LongestStreakBundle\Entity\Commit;
 use LS\LongestStreakBundle\Entity\Repo;
 use LS\LongestStreakBundle\Entity\User;
 use LS\LongestStreakBundle\Provider\GitHubProvider;
@@ -14,21 +15,15 @@ class ReposManager //RepositoryUpdater
      * @var \LS\LongestStreakBundle\Provider\GitHubProvider
      */
     private $gitHubProvider;
-    /**
-     * @var \LS\LongestStreakBundle\Repository\RepoRepository
-     */
-    private $repoRepository;
 
     private $em;
 
     public function __construct(
         GitHubProvider $gitHubProvider,
-        RepoRepository $repoRepository,
         EntityManager $em
     )
     {
         $this->gitHubProvider = $gitHubProvider;
-        $this->repoRepository = $repoRepository;
         $this->em = $em;
     }
 
@@ -65,9 +60,12 @@ class ReposManager //RepositoryUpdater
     {
         $commitsArray = $this->gitHubProvider->getUserCommitsFromRepoArray($user, $repo->getName(), $repo->getUpdatedAt());
 
+        /** @var Commit $commit */
         foreach ($commitsArray as $commit) {
             $commit->setRepo($repo);
-            $this->em->persist($commit);
+            if(!$this->em->getRepository('LSLongestStreakBundle:Commit')->find($commit->getSha())) {
+                $this->em->persist($commit);
+            }
         }
         $user->setUpdatedAt(new \DateTime('now'));
         $repo->setUpdatedAt(new \DateTime('now'));

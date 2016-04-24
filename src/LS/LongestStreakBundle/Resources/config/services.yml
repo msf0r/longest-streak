@@ -29,7 +29,6 @@ services:
         class: LS\LongestStreakBundle\Manager\ReposManager
         arguments:
             - @app.provider.github_provider
-            - @app.repository.repo
             - @doctrine.orm.default_entity_manager
 
     app.update.common:
